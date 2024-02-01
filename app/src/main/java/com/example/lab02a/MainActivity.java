@@ -2,6 +2,7 @@ package com.example.lab02a;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
                 EditText totalBillInput = binding.totalBillInput;
                 EditText tipPercentInput = binding.tipPercentageInput;
                 EditText numPeopleInput = binding.numPeopleInput;
-                float totalBill = Float.parseFloat(totalBillInput.getText().toString());
-                int tipPercent = Integer.parseInt(tipPercentInput.getText().toString());
-                int numPeople = Integer.parseInt(numPeopleInput.getText().toString());
-                calculate(totalBill,tipPercent,numPeople);
+                String totalBill = totalBillInput.getText().toString();
+                String tipPercent = tipPercentInput.getText().toString();
+                String numPeople = numPeopleInput.getText().toString();
+                checkInputs(totalBill, tipPercent, numPeople);
             }
         });
 
@@ -41,5 +42,17 @@ public class MainActivity extends AppCompatActivity {
         TextView t = binding.output;
         String outputText = "Total Per Person: " + formattedTotal;
         t.setText(outputText);
+    }
+
+    private void checkInputs(String totalBill, String tipPercent, String numPeople){
+        if(totalBill.isEmpty() || tipPercent.isEmpty() || numPeople.isEmpty()){
+            Log.d("CHECK INPUTS", "ERROR: All inputs not provided!");
+        }
+        else{
+            float totalBillnum = Float.parseFloat(totalBill);
+            int tipPercentnum = Integer.parseInt(tipPercent);
+            int numPeoplenum = Integer.parseInt(numPeople);
+            calculate(totalBillnum,tipPercentnum,numPeoplenum);
+        }
     }
 }
