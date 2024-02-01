@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         binding.calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                EditText totalBillInput = binding.totalbillInput;
+                EditText totalBillInput = binding.totalBillInput;
                 EditText tipPercentInput = binding.tipPercentageInput;
                 EditText numPeopleInput = binding.numPeopleInput;
                 float totalBill = Float.parseFloat(totalBillInput.getText().toString());
